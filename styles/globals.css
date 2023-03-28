@@ -1,0 +1,76 @@
+:root {
+    --blue-primary: #353f3b;
+    --white: #ffffff;
+    --gray-primary: #efeff3;
+    --black: #000000;
+    --green-primary: #9fbcb1;
+    --green-dark: #58938E;
+    --green-semi-transparent: rgba(218, 228, 224, 0.6);
+    --background-primary: #f3f3f3;
+    --background-secondary: #d4e7e0;
+    --footer: #31524f;
+    --shadow: #c3c3c3;
+    --teal: #62a39e;
+    --gradient-background: linear-gradient(
+        180deg,
+        rgba(212, 231, 224, 1) 0%,
+        rgba(253, 254, 252, 1) 70%,
+        rgba(253, 254, 252, 1) 100%
+    );
+    --dark-green: #31524f;
+    --MOBILE-BREAKPOINT: 584px;
+    --MEDIUM-BREAKPOPINT: 1200px;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    background: var(--gradient-background);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 3.052rem;
+}
+
+h2 {
+    font-size: 2.441rem;
+}
+
+h3 {
+    font-size: 1.953rem;
+}
+
+h4 {
+    font-size: 1.563rem;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 1200px) {
+    html,
+    body {
+        background: linear-gradient(
+            180deg,
+            rgba(212, 231, 224, 1) 0%,
+            rgba(253, 254, 252, 1) 30%,
+            rgba(253, 254, 252, 1) 100%
+        );
+    }
+}
+
+@media only screen and (max-width: 884px) {
+    body {
+        overflow-x: hidden;
+    } 
+}
+
+@import '@voluespark/spark.elements/build/index.css'

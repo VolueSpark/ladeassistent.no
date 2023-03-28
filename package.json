@@ -1,0 +1,40 @@
+{
+    "name": "smart-charging-website",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@auth0/nextjs-auth0": "^1.9.2",
+        "@leile/lobo-t": "^1.0.5",
+        "@next/font": "^13.0.5",
+        "@turf/boolean-point-in-polygon": "^6.5.0",
+        "@voluespark/spark.elements": "0.0.24",
+        "date-fns": "^2.29.3",
+        "framer-motion": "^7.6.19",
+        "next": "13.0.0",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "sass": "^1.56.1",
+        "simple-oauth2": "^5.0.0",
+        "use-local-storage": "^2.3.6",
+        "zod": "^3.19.1"
+    },
+    "devDependencies": {
+        "@azure/static-web-apps-cli": "^1.0.3",
+        "@types/node": "18.11.5",
+        "@types/react": "18.0.23",
+        "@types/react-dom": "18.0.7",
+        "@types/simple-oauth2": "^5.0.3",
+        "eslint": "8.26.0",
+        "eslint-config-next": "13.0.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "prettier": "^2.7.1",
+        "typescript": "4.8.4"
+    }
+}

@@ -1,0 +1,5 @@
+# Price areas retrieved from NVE's ArcGIS REST API
+# ArcGIS map viewable at https://www.arcgis.com/home/webmap/viewer.html?url=https%3A%2F%2Fgis3.nve.no%2Fmap%2Frest%2Fservices%2FMapservices%2FElspot%2FMapServer&source=sd (choose ElSpot omraade under Elspot)
+# Layer viewable at https://gis3.nve.no/map/rest/services/Mapservices/Elspot/MapServer/0
+
+curl "https://gis3.nve.no/map/rest/services/Mapservices/Elspot/MapServer/0/query?where=1%3D1&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&featureEncoding=esriDefault&f=geojson" -o pages/api/price-area/priceArea.json

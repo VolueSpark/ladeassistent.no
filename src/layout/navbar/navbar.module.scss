@@ -1,0 +1,138 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1.56rem;
+    justify-content: space-between;
+}
+
+/* TODO: in order to align this in the center i have to give the same width
+to the left and right containers (i.e. link and buttons) */
+.container {
+    width: 614px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.group__left,
+.group__right {
+    width: 21rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.group__right {
+    justify-content: flex-end;
+}
+
+.buttonContainer {
+    width: 97px;
+}
+
+.icon {
+    margin-left: 3rem;
+}
+
+.link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+}
+
+.mobile__nav {
+    display: none;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@media only screen and (max-width: 884px) {
+    .container {
+        display: none;
+    }
+
+    .group__right {
+        display: none;
+    }
+
+    .mobile__nav {
+        display: block;
+    }
+
+    .wrapper {
+        justify-content: space-between;
+        padding: 0 1rem;
+    }
+
+    .group__left {
+        .link {
+            margin: 0;
+
+            .icon {
+                margin: 0;
+            }
+        }
+    }
+
+    .header__nav, .header__nav__nested {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: var(--background-secondary);
+        transform: translateX(0%);
+        transition: transform 300ms ease-in-out;
+        z-index: 98;
+        padding: 1.5rem;
+    }
+
+    .header__nav__hidden, .header__nav__nested__hidden {
+        transform: translateX(100%);
+        transition: transform 300ms ease-in-out;
+    }
+
+    .header__list {
+        margin-top: 2.5rem;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .list__item,
+    .header__title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .list__item {
+        border-bottom: 1px solid var(--teal);
+    }
+
+    .link {
+        margin-bottom: 1rem;
+    }
+
+    .center {
+        margin: 0 auto;
+        min-width: 7rem;
+        margin-top: 1.5rem;
+    }
+}

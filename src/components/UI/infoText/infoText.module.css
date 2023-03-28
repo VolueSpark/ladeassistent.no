@@ -1,0 +1,10 @@
+.info {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    margin-top: 0.8rem;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-family: inherit;
+}
