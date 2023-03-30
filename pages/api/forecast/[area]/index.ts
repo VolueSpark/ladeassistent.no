@@ -19,7 +19,7 @@ export default async function handler(
 
     const token = await getOrRefreshAccessToken()
     const response = await fetch(
-        `${PLATFORM_API_URL}/api/forecast/${area}?Currency=${currency}&EnergyUnit=${energyUnit}&VATRate=${vatRate}`,
+        `${PLATFORM_API_URL}/smart/v1/prices/forecast/${area}?Currency=${currency}&EnergyUnit=${energyUnit}&VATRate=${vatRate}`,
         {
             method: 'GET',
             headers: {
