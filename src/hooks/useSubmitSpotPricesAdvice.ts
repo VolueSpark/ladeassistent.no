@@ -5,7 +5,7 @@ import { useCallback } from 'react'
 export default function useSubmitSpotPricesAdvice() {
     return useCallback(async function useSubmitSpotPricesAdvice(
         area: string
-    ): Promise<SpotPriceAdviceDTO> {
+    ): Promise<SpotPriceAdviceDTO | string> {
         const response = await fetch(`/api/spot-prices/${area}/advice`, {
             method: 'POST',
             headers: {
@@ -24,6 +24,12 @@ export default function useSubmitSpotPricesAdvice() {
                 startFrom: new Date().toISOString(),
             }),
         })
+
+        if (response.status !== 200) {
+            const error = await response.json()
+            return error.message
+        }
+
         const data = await response.json()
 
         return data
