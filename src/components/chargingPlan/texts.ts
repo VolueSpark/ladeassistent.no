@@ -12,8 +12,8 @@ export const texts = {
         en: "Todays's overview",
     },
     forecast: {
-        nb: 'Prisestimat for den kommende uke',
-        en: 'Forecast for the coming week',
+        nb: 'Prisestimat for 7 dager',
+        en: '7 day forecast',
     },
     nok: {
         nb: 'kr',
@@ -37,7 +37,7 @@ export const texts = {
             en: 'Worst price',
         },
         avoid: {
-            nb: 'Bør unngås',
+            nb: 'Anbefales å vente',
             en: 'Try to avoid',
         },
         good: {
