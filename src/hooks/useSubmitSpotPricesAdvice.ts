@@ -12,7 +12,7 @@ export default function useSubmitSpotPricesAdvice() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                priceUnitParameters: {
+                priceUnitsParameters: {
                     currency: 'NOK',
                     energyUnit: 'kWh',
                     vatRate: 1.25,
