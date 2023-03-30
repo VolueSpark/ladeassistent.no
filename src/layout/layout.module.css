@@ -2,12 +2,9 @@
     position: relative;
     min-height: 100vh;
     padding-bottom: 8.75rem;
+    overflow: hidden;
 }
 
 .bodyContainer {
     margin: 0 auto;
-}
-
-.hide__overflow__y {
-    overflow-y: hidden;
 }
