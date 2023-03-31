@@ -25,7 +25,7 @@ type FormProps = {
 }
 
 // TODO: update with region selection
-export default function ChargingPlan({ area }: FormProps) {
+export default function ChargingPlan({ area, controls }: FormProps) {
     const submitForecast = useSubmitForecastAdvice()
     // const fetchSpotPrices = useFetchSpotPrices()
     const submitSpotPrices = useSubmitSpotPricesAdvice()
@@ -95,7 +95,7 @@ export default function ChargingPlan({ area }: FormProps) {
 
     return (
         <div className={style.experimental_container}>
-            <AreaSelector value={region} onChange={setRegion} />
+            {controls && <AreaSelector value={region} onChange={setRegion} />}
             {!isLoading && (
                 <>
                     {spotPricesAdvice && (

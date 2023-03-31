@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useTranslation } from '../../i18n'
-import ChargingPlan from '../../src/components/old_chargingPlan'
+import ChargingPlan from '../../src/components/chargingPlan'
 import { isPriceArea, PriceArea } from '../../src/utils/priceArea.helper'
 
 const texts = {
@@ -16,7 +16,7 @@ export default function Area() {
     const { area, areaSelector } = router.query
 
     return (
-        <div>
+        <div style={{ minHeight: '100vh', padding: '3%' }}>
             {area && isPriceArea(area as string) ? (
                 <ChargingPlan
                     area={area as PriceArea}
