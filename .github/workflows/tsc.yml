@@ -1,0 +1,24 @@
+name: TypeScript
+
+on:
+    push:
+        paths:
+            - '**.ts'
+            - '**.tsx'
+
+jobs:
+    tsc:
+        name: tsc
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Replace .npmrc
+              run: echo "${{ secrets.NPM_RC }}" > .npmrc
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 16
+                  cache: 'npm'
+            - name: yarn install
+              run: yarn install
+            - name: tsc
+              uses: icrawl/action-tsc@v1
