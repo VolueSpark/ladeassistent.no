@@ -32,9 +32,11 @@ export default function ChargingPlan({ area }: FormProps) {
     const [region, setRegion] = useLocalStorage<string>('region', '')
     const [isLoading, setIsLoading] = useState(false)
     const [forecastAdvice, setForecastAdvice] = useState<ForecastAdviceDTO>()
+    const [forecastAdviceError, setForecastAdviceError] = useState('')
     // const [spotPrices, setSpotPrices] = useState<SpotPricesDTO>()
     const [spotPricesAdvice, setSpotPricesAdvice] =
         useState<SpotPriceAdviceDTO>()
+    const [spotPricesAdviceError, setSpotPricesAdviceError] = useState('')
     // const [prices, setPrices] = useState<
     //     {
     //         time: string
@@ -56,9 +58,13 @@ export default function ChargingPlan({ area }: FormProps) {
         // const spotPricesData = await fetchSpotPrices(region)
         const spotPricesAdviceData = await submitSpotPrices(region)
         setIsLoading(false)
-        setForecastAdvice(forecastAdviceData)
+        if (typeof forecastAdviceData === 'string')
+            setForecastAdviceError(forecastAdviceData)
+        else setForecastAdvice(forecastAdviceData)
         // setSpotPrices(spotPricesData)
-        setSpotPricesAdvice(spotPricesAdviceData)
+        if (typeof spotPricesAdviceData === 'string')
+            setSpotPricesAdviceError(spotPricesAdviceData)
+        else setSpotPricesAdvice(spotPricesAdviceData)
     }
 
     useEffect(() => {
@@ -68,6 +74,8 @@ export default function ChargingPlan({ area }: FormProps) {
     useEffect(() => {
         if (region) {
             setIsLoading(true)
+            setForecastAdviceError('')
+            setSpotPricesAdviceError('')
             handleSubmit()
         }
     }, [region])
@@ -125,44 +133,46 @@ export default function ChargingPlan({ area }: FormProps) {
                         </>
                     )}
                     {spotPricesAdvice && (
-                        // TODO: remove this div
-                        <div
-                            style={{
-                                width: '100%',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                            }}
-                        >
-                            <h3>{t(texts.spot_price)}</h3>
-                            <div className={style.graph_container}>
-                                <AdviceGraph
-                                    initialHeight={600}
-                                    data={spotPricesAdvice.spotPrices}
-                                    advice={spotPricesAdvice.advice}
-                                    priceUnit="øre"
-                                    energyUnit="kWh"
-                                    legend={{
-                                        Now: t(texts.legend.now),
-                                        Best: t(texts.legend.best),
-                                        Worst: t(texts.legend.worst),
-                                        Avoid: t(texts.legend.avoid),
-                                        Unknown: '',
-                                        Normal: '',
-                                        Good: '',
-                                    }}
-                                    daysLabelText={{
-                                        today: t(texts.daysLabelText.today),
-                                        tomorrow: t(
-                                            texts.daysLabelText.tomorrow
-                                        ),
-                                    }}
-                                />
+                        <>
+                            {/* // TODO: remove this div */}
+                            <div
+                                style={{
+                                    width: '100%',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                }}
+                            >
+                                <h3>{t(texts.spot_price)}</h3>
+                                <div className={style.graph_container}>
+                                    <AdviceGraph
+                                        initialHeight={600}
+                                        data={spotPricesAdvice.spotPrices}
+                                        advice={spotPricesAdvice.advice}
+                                        priceUnit="øre"
+                                        energyUnit="kWh"
+                                        legend={{
+                                            Now: t(texts.legend.now),
+                                            Best: t(texts.legend.best),
+                                            Worst: t(texts.legend.worst),
+                                            Avoid: t(texts.legend.avoid),
+                                            Unknown: '',
+                                            Normal: '',
+                                            Good: '',
+                                        }}
+                                        daysLabelText={{
+                                            today: t(texts.daysLabelText.today),
+                                            tomorrow: t(
+                                                texts.daysLabelText.tomorrow
+                                            ),
+                                        }}
+                                    />
+                                </div>
                             </div>
-                        </div>
+                            <InfoText>{t(texts.infoText.spot_price)}</InfoText>
+                        </>
                     )}
-                    <InfoText>{t(texts.infoText.spot_price)}</InfoText>
 
                     <hr />
 
@@ -197,33 +207,41 @@ export default function ChargingPlan({ area }: FormProps) {
                         </div>
                     )*/}
                     {forecastAdvice && (
-                        // TODO: remove this div
-                        <div
-                            style={{
-                                width: '100%',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                            }}
-                        >
-                            <h3>{t(texts.forecast)}</h3>
-                            <ForecastTable
-                                data={forecastAdvice.forecastAdvice.map(
-                                    (f) => ({
-                                        ...f,
-                                        averagePrice: f.averagePrice * 100,
-                                    })
-                                )}
-                                legend={{
-                                    good: t(texts.legend.good),
-                                    avoid: t(texts.legend.avoid),
+                        <>
+                            {/* // TODO: remove this div */}
+                            <div
+                                style={{
+                                    width: '100%',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
                                 }}
-                            />
-                        </div>
+                            >
+                                <h3>{t(texts.forecast)}</h3>
+                                <ForecastTable
+                                    data={forecastAdvice.forecastAdvice.map(
+                                        (f) => ({
+                                            ...f,
+                                            averagePrice: f.averagePrice * 100,
+                                        })
+                                    )}
+                                    legend={{
+                                        good: t(texts.legend.good),
+                                        avoid: t(texts.legend.avoid),
+                                    }}
+                                />
+                            </div>
+                            <InfoText>{t(texts.infoText.forecast)}</InfoText>
+                        </>
                     )}
-                    <InfoText>{t(texts.infoText.forecast)}</InfoText>
                 </>
+            )}
+            {(spotPricesAdviceError || forecastAdviceError) && (
+                <p>
+                    There was en error rendering component due to failure in
+                    fetching data.{' '}
+                </p>
             )}
         </div>
     )

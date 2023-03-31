@@ -35,6 +35,14 @@ export default async function handler(
             body: JSON.stringify(req.body),
         }
     )
+
+    if (!(response.status === 200)) {
+        res.status(response.status).json({
+            message:
+                'There was en error with the response from one or more external API(s).',
+        })
+    }
+
     const data = (await response.json()) as ForecastAdviceDTO
 
     res.status(200).json(data)

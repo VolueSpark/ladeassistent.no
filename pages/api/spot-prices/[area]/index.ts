@@ -15,7 +15,7 @@ export type SpotPricesDTO = {
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<SpotPricesDTO>
+    res: NextApiResponse<SpotPricesDTO | { message: string }>
 ) {
     const { area, currency, energyUnit, vatRate } = req.query
 
@@ -29,6 +29,13 @@ export default async function handler(
             },
         }
     )
+
+    if (!(response.status === 200)) {
+        res.status(response.status).json({
+            message:
+                'There was en error with the response from one or more external API(s).',
+        })
+    }
 
     const data = (await response.json()) as SpotPricesDTO
 

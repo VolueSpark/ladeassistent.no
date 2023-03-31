@@ -5,7 +5,7 @@ import { useCallback } from 'react'
 export default function useSubmitForecastAdvice() {
     return useCallback(async function useSubmitForecastAdvice(
         area: string
-    ): Promise<ForecastAdviceDTO> {
+    ): Promise<ForecastAdviceDTO | string> {
         const response = await fetch(`/api/forecast/${area}/advice`, {
             method: 'POST',
             headers: {
@@ -22,6 +22,12 @@ export default function useSubmitForecastAdvice() {
                 },
             }),
         })
+
+        if (response.status !== 200) {
+            const error = await response.json()
+            return error.message
+        }
+
         const data = await response.json()
 
         return data
