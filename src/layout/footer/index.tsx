@@ -9,6 +9,14 @@ const texts = {
         nb: 'Kontakt oss',
         en: 'Contact us',
     },
+    github: {
+        nb: 'Github',
+        en: 'Github',
+    },
+    docs: {
+        nb: 'Dokumentasjon',
+        en: 'Documentation',
+    },
 }
 
 export default function Footer() {
@@ -29,6 +37,10 @@ export default function Footer() {
             </span>
             <div className={style.content}>
                 <Link href="/kontakt">{t(texts.contact)}</Link>
+                <Link href="https://github.com/VolueSpark/ladeassistent.no">
+                    {t(texts.github)}
+                </Link>
+                <Link href="https://docs.voluespark.com/">{t(texts.docs)}</Link>
             </div>
             <div className={style.brand}>
                 <p>Powered by </p>
