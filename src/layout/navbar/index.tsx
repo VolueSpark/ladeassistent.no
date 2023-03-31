@@ -47,11 +47,7 @@ const texts = {
 
 const MOBILE_BEAKPOINT = 584
 
-type NavbarProps = {
-    setHideOverflowY: (value: boolean) => void
-}
-
-export default function Navbar({ setHideOverflowY }: NavbarProps) {
+export default function Navbar() {
     const { t, language } = useTranslation()
     const router = useRouter()
 
@@ -71,10 +67,6 @@ export default function Navbar({ setHideOverflowY }: NavbarProps) {
     const onChange = (value: string) => {
         router.push(router.asPath, router.asPath, { locale: value })
     }
-
-    useEffect(() => {
-        setHideOverflowY(isMenuVisible)
-    }, [isMenuVisible])
 
     return (
         <div className={style.wrapper}>

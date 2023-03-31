@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { ReactNode, useState } from 'react'
+import { ReactNode } from 'react'
 import Navbar from './navbar'
 import Footer from './footer'
 
@@ -12,13 +12,8 @@ type LayoutProps = {
 }
 
 export default function Layout({ children, title, description }: LayoutProps) {
-    const [hideOverflowY, setHideOverflowY] = useState(false)
     return (
-        <div
-            className={`${style.container} ${
-                hideOverflowY && style.hide__overflow__y
-            }`}
-        >
+        <div>
             <Head>
                 <title>{title ?? 'Ladeassistenten'}</title>
                 <meta
@@ -32,8 +27,8 @@ export default function Layout({ children, title, description }: LayoutProps) {
                 />
             </Head>
 
-            <main>
-                <Navbar setHideOverflowY={setHideOverflowY} />
+            <main className={style.container}>
+                <Navbar />
                 <div className={style.bodyContainer}>{children}</div>
             </main>
             <Footer />
