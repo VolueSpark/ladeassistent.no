@@ -35,7 +35,7 @@ export default function Landing({
                 </header>
 
                 {showChargingPlan ? (
-                    <ChargingPlan />
+                    <ChargingPlan controls={true} />
                 ) : (
                     <section className={style.chargingPlanDisabled}>
                         <h4>Ladeplanen er for øyeblikket utilgjengelig</h4>
