@@ -1,7 +1,7 @@
 export const texts = {
     estimation: {
-        nb: 'Beregning er basert på lading av en elbil med 64kWt batterikapasitet, en lader på 3.6kW, og lading fra 50-90% batterinivå, som gir et ladevindu på 4 timer. Ved å lage bruker og koble til bilen din kan vi bruke live data for mer nøyaktige estimater.',
-        en: 'Calculation is based on an electriv vehicle with a battery capacity of 64kWh, a charger with an effect of 3.6kW, and charging from 50% to 90% battery level which gives a charging time of 9 hours. By signing up for an account and registering your own vehicle we can use live data to make better estimates.',
+        nb: 'Beregning er basert på lading av en elbil med 64kW batterikapasitet, en lader på 3.6kWh, og lading fra 50-70% batterinivå, som gir et ladevindu på 4 timer.',
+        en: 'Calculation is based on an electric vehicle with a battery capacity of 64kW, a charger with an effect of 3.6kWh, and charging from 50% to 70% battery level which gives a charging time of 4 hours.',
     },
     spot_price: {
         nb: 'Nåværende spotpris anbefalinger',
