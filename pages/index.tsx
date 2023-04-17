@@ -31,7 +31,7 @@ export default function Landing({
         <Layout>
             <div className={style.primaryContainer}>
                 <header>
-                    <h1 className={style.title}>{t(texts.headers.main)}</h1>
+                    <h2 className={style.title}>{t(texts.headers.main)}</h2>
                 </header>
 
                 {showChargingPlan ? (

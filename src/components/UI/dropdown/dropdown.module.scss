@@ -11,9 +11,9 @@
         position: relative;
 
         select {
-            max-width: max-content;
+            max-width: 15;
             font-size: 1rem;
-            width: min-content;
+            min-width: 8rem;
             border: none;
             color: var(--blue-primary);
             background-color: transparent;
