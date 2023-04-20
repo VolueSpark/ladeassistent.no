@@ -13,9 +13,11 @@ type DropdownProps = {
         label: string
     }[]
     disabled?: boolean
+    borderBottom?: boolean
+    size?: 'default' | 'large'
 }
 
-export default function Dropdown({
+export default function Drodown({
     id,
     testId,
     name,
@@ -24,9 +26,15 @@ export default function Dropdown({
     label,
     options,
     disabled,
+    borderBottom = true,
+    size = 'default',
 }: DropdownProps) {
     return (
-        <div className={style.container}>
+        <div
+            className={`${style.container} ${
+                !borderBottom && style.no_border
+            } ${size === 'large' && style.large}`}
+        >
             <div>
                 <select
                     data-testid={testId}

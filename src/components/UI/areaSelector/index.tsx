@@ -1,6 +1,5 @@
 import Dropdown from '../dropdown'
 import { useTranslation } from '@/i18n'
-import { AND } from '@/utils/classNames.helper'
 import { texts } from './texts'
 
 import style from './areaSelector.module.css'
@@ -13,9 +12,9 @@ type AreaSelectorProps = {
 export default function AreaSelector({ value, onChange }: AreaSelectorProps) {
     const { t } = useTranslation()
     return (
-        <div className={AND(style.section, style.priceAreaSection)}>
+        <div className={style.section}>
             <div>
-                <h4 style={{ fontSize: '1.25rem' }}>{t(texts.my_area)}</h4>
+                <p>{t(texts.my_area)}</p>
                 <Dropdown
                     id="region"
                     testId={'spark-elements__price-region-dropdown'}
