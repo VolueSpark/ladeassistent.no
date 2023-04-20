@@ -1,36 +1,51 @@
 import { ForecastAdviceDTO } from '@/pages/api/forecast/[area]/advice'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 
 // TODO: allow submission of body data
 export default function useSubmitForecastAdvice() {
-    return useCallback(async function useSubmitForecastAdvice(
-        area: string
-    ): Promise<ForecastAdviceDTO | string> {
-        const response = await fetch(`/api/forecast/${area}/advice`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                priceUnitsParameters: {
-                    currency: 'NOK',
-                    energyUnit: 'kWh',
-                    vatRate: 1.25,
+    const [forecastAdvice, setForecastAdvice] = useState<ForecastAdviceDTO>()
+    const [forecastAdviceError, setForecastAdviceError] = useState('')
+    const [isLoadingForecastAdvice, setIsLoadingForecastAdvice] =
+        useState(false)
+
+    const submitForecastAdvice = useCallback(
+        async function useSubmitForecastAdvice(area: string): Promise<void> {
+            setIsLoadingForecastAdvice(true)
+            setForecastAdviceError('')
+            const response = await fetch(`/api/forecast/${area}/advice`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
                 },
-                segmentOptionsParameters: {
-                    segmentSize: 6,
-                },
-            }),
-        })
+                body: JSON.stringify({
+                    priceUnitsParameters: {
+                        currency: 'NOK',
+                        energyUnit: 'kWh',
+                        vatRate: 1.25,
+                    },
+                    segmentOptionsParameters: {
+                        segmentSize: 6,
+                    },
+                }),
+            })
 
-        if (response.status !== 200) {
-            const error = await response.json()
-            return error.message
-        }
+            setIsLoadingForecastAdvice(false)
 
-        const data = await response.json()
+            if (response.status !== 200) {
+                const error = await response.json()
+                setForecastAdviceError(error.message)
+            }
 
-        return data
-    },
-    [])
+            const data = await response.json()
+            setForecastAdvice(data)
+        },
+        []
+    )
+
+    return {
+        forecastAdvice,
+        forecastAdviceError,
+        isLoadingForecastAdvice,
+        submitForecastAdvice,
+    }
 }

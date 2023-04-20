@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import style from './chargingPlan.module.css'
 import { PriceArea } from '@/utils/priceArea.helper'
@@ -13,9 +13,7 @@ import { texts } from './texts'
 import usePriceArea from '@/src/hooks/usePriceArea'
 import { InfoText, ChargeNow, AreaSelector } from '../UI'
 import useSubmitForecastAdvice from '@/hooks/useSubmitForecastAdvice'
-import { ForecastAdviceDTO } from '@/pages/api/forecast/[area]/advice'
 import useSubmitSpotPricesAdvice from '@/hooks/useSubmitSpotPricesAdvice'
-import { SpotPriceAdviceDTO } from '@/pages/api/spot-prices/[area]/advice'
 // import useFetchSpotPrices from '@/hooks/useFetchSpotPrices'
 // import { SpotPricesDTO } from '@/pages/api/spot-prices/[area]'
 
@@ -26,17 +24,21 @@ type FormProps = {
 
 // TODO: update with region selection
 export default function ChargingPlan({ area, controls }: FormProps) {
-    const submitForecast = useSubmitForecastAdvice()
+    const {
+        forecastAdvice,
+        forecastAdviceError,
+        isLoadingForecastAdvice,
+        submitForecastAdvice,
+    } = useSubmitForecastAdvice()
     // const fetchSpotPrices = useFetchSpotPrices()
-    const submitSpotPrices = useSubmitSpotPricesAdvice()
+    const {
+        spotPricesAdvice,
+        spotPricesAdviceError,
+        isLoadingSpotPricesAdvice,
+        submitSpotPricesAdvice,
+    } = useSubmitSpotPricesAdvice()
     const [region, setRegion] = useLocalStorage<string>('region', '')
-    const [isLoading, setIsLoading] = useState(false)
-    const [forecastAdvice, setForecastAdvice] = useState<ForecastAdviceDTO>()
-    const [forecastAdviceError, setForecastAdviceError] = useState('')
     // const [spotPrices, setSpotPrices] = useState<SpotPricesDTO>()
-    const [spotPricesAdvice, setSpotPricesAdvice] =
-        useState<SpotPriceAdviceDTO>()
-    const [spotPricesAdviceError, setSpotPricesAdviceError] = useState('')
     // const [prices, setPrices] = useState<
     //     {
     //         time: string
@@ -53,30 +55,14 @@ export default function ChargingPlan({ area, controls }: FormProps) {
         }
     }, [])
 
-    const handleSubmit = async () => {
-        const forecastAdviceData = await submitForecast(region)
-        // const spotPricesData = await fetchSpotPrices(region)
-        const spotPricesAdviceData = await submitSpotPrices(region)
-        setIsLoading(false)
-        if (typeof forecastAdviceData === 'string')
-            setForecastAdviceError(forecastAdviceData)
-        else setForecastAdvice(forecastAdviceData)
-        // setSpotPrices(spotPricesData)
-        if (typeof spotPricesAdviceData === 'string')
-            setSpotPricesAdviceError(spotPricesAdviceData)
-        else setSpotPricesAdvice(spotPricesAdviceData)
-    }
-
     useEffect(() => {
         if (area) setRegion(area)
     }, [area])
 
     useEffect(() => {
         if (region) {
-            setIsLoading(true)
-            setForecastAdviceError('')
-            setSpotPricesAdviceError('')
-            handleSubmit()
+            submitSpotPricesAdvice(region)
+            submitForecastAdvice(region)
         }
     }, [region])
 
@@ -96,7 +82,7 @@ export default function ChargingPlan({ area, controls }: FormProps) {
     return (
         <div className={style.experimental_container}>
             {controls && <AreaSelector value={region} onChange={setRegion} />}
-            {!isLoading && (
+            {!isLoadingForecastAdvice && !isLoadingSpotPricesAdvice && (
                 <>
                     {spotPricesAdvice && (
                         <>
