@@ -11,7 +11,7 @@
         position: relative;
 
         select {
-            max-width: 15;
+            max-width: 15rem;
             font-size: 1rem;
             min-width: 8rem;
             border: none;
@@ -29,6 +29,46 @@
             pointer-events: none;
             position: absolute;
             right: 0;
+        }
+    }
+}
+
+.no_border {
+    div {
+        border-bottom: none;
+    }
+}
+
+.large {
+    div {
+        select {
+            font-size: 1.95rem;
+            font-family: "Krub", sans-serif;
+            font-weight: 200;
+            max-width: 20rem;
+            min-width: 17rem;
+        }
+
+        img {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 884px) {
+    .large {
+        div {
+            select {
+                font-size: 1rem;
+                max-width: 15rem;
+                min-width: 9rem;
+            }
+
+            img {
+                width: 1rem;
+                height: 1rem;
+            }
         }
     }
 }
