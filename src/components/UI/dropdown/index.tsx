@@ -17,7 +17,7 @@ type DropdownProps = {
     size?: 'default' | 'large'
 }
 
-export default function Drodown({
+export default function Dropdown({
     id,
     testId,
     name,
