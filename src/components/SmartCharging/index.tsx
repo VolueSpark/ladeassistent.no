@@ -15,7 +15,7 @@ import ActiveComponentSelector from './ActiveComponentSelector'
 const texts = {
     error: {
         nb: 'Vi kan ikke vise data for øyeblikket grunnet en intern feil i henting av data. Vennligst prøv igjen senere.',
-        en: 'There was en error rendering component due to an internal failure in fetching data. Please try again later.',
+        en: 'Cannot show the component due to an internal error while fetching data. Please try again later.',
     },
 }
 
