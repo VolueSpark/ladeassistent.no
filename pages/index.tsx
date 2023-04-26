@@ -12,7 +12,7 @@ const texts = {
         },
         sub: {
             nb: 'Viser deg når det er best tid å lade el-bilen din!',
-            en: "Showing you the best time to charge your EV!",
+            en: 'Showing you the best time to charge your EV!',
         },
     },
 }

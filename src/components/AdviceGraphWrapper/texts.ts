@@ -28,7 +28,7 @@ export const texts = {
         },
     },
     infoText: {
-        nb: 'Spotprisene er hentet fra Nord Pool. De er basert på et gjennomsnitt av spotprisene for de siste 24/48 timene. Spotprisene oppdateres hvert 15. minutt.',
-        en: 'Spot prices are fetched from Nord Pool. They are based on an average of the spot prices for the last 24/48 hours. Spot prices update every 15 minutes.',
+        nb: 'Spotprisene oppdateres hvert 15. minutt og reflekterer de reelle prisene for øyeblikket.',
+        en: 'Spot prices update every 15 minutes and show the actual prices for any given hour.',
     },
 }
