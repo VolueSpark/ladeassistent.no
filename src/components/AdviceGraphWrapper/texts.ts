@@ -28,7 +28,7 @@ export const texts = {
         },
     },
     infoText: {
-        nb: 'Spotprisene oppdateres hvert 15. minutt og reflekterer de reelle prisene for øyeblikket.',
-        en: 'Spot prices update every 15 minutes and show the actual prices for any given hour.',
+        nb: 'Spotprisene oppdateres hvert dag og reflekterer de reelle prisene for øyeblikket.',
+        en: 'Spot prices update every day and show the actual prices for any given hour.',
     },
 }
