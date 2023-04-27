@@ -1,5 +1,5 @@
+import SmartCharging from '@/components/SmartCharging'
 import { useTranslation } from '@/i18n'
-import ChargingPlan from '@/components/chargingPlan'
 import Layout from '@/src/layout'
 import style from '@/styles/Home.module.scss'
 import { InferGetStaticPropsType, GetServerSidePropsContext } from 'next'
@@ -7,8 +7,12 @@ import { InferGetStaticPropsType, GetServerSidePropsContext } from 'next'
 const texts = {
     headers: {
         main: {
-            nb: 'Hva koster det å lade nå?',
-            en: 'How much will it cost to charge now?',
+            nb: 'Spark Smart Lading',
+            en: 'Spark Smart Charging',
+        },
+        sub: {
+            nb: 'Viser deg når det er best tid å lade el-bilen din!',
+            en: 'Showing you the best time to charge your EV!',
         },
     },
 }
@@ -32,10 +36,11 @@ export default function Landing({
             <div className={style.primaryContainer}>
                 <header>
                     <h2 className={style.title}>{t(texts.headers.main)}</h2>
+                    <h4>{t(texts.headers.sub)}</h4>
                 </header>
 
                 {showChargingPlan ? (
-                    <ChargingPlan controls={true} />
+                    <SmartCharging controls={true} />
                 ) : (
                     <section className={style.chargingPlanDisabled}>
                         <h4>Ladeplanen er for øyeblikket utilgjengelig</h4>
