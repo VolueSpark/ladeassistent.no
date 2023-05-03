@@ -90,8 +90,6 @@ async function queryVehicleList(): Promise<VehicleListDTO | null> {
         }),
     })
 
-    console.log(response)
-
     if (response.status !== 200) return null
 
     return response.json()

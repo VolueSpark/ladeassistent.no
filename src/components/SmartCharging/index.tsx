@@ -15,6 +15,7 @@ import Modal, { useModal } from '@/src/layout/modal'
 import useResize from '@/src/hooks/useResize'
 import { MOBILE_BEAKPOINT } from '@/src/layout/navbar'
 import { useRouter } from 'next/router'
+import EVCard from './EVCard'
 
 const texts = {
     error: {
@@ -55,6 +56,7 @@ export default function ChargingPlan({ area, controls }: FormProps) {
         useState<string>('')
     const [chargingPercentageStop, setChargingPercentageStop] =
         useState<string>('')
+    const [evImage, setEvImage] = useState('')
 
     const { width } = useResize()
     const isMobile = width <= MOBILE_BEAKPOINT
@@ -120,15 +122,24 @@ export default function ChargingPlan({ area, controls }: FormProps) {
     ])
 
     useEffect(() => {
-        setEv(localStorage.getItem('ev') ?? '')
-        setEvCapacity(localStorage.getItem('ev_capacity') ?? '')
-        setChargerCapacity(localStorage.getItem('charger_capacity') ?? '')
+        setEv(localStorage.getItem('ev')?.replaceAll('"', '') ?? '')
+        setEvCapacity(
+            localStorage.getItem('ev_capacity')?.replaceAll('"', '') ?? ''
+        )
+        setChargerCapacity(
+            localStorage.getItem('charger_capacity')?.replaceAll('"', '') ?? ''
+        )
         setChargingPercentageStart(
-            localStorage.getItem('charging_percentage_start') ?? ''
+            localStorage
+                .getItem('charging_percentage_start')
+                ?.replaceAll('"', '') ?? ''
         )
         setChargingPercentageStop(
-            localStorage.getItem('charging_percentage_stop') ?? ''
+            localStorage
+                .getItem('charging_percentage_stop')
+                ?.replaceAll('"', '') ?? ''
         )
+        setEvImage(localStorage.getItem('ev_image')?.replaceAll('"', '') ?? '')
     }, [])
 
     const { t } = useTranslation()
@@ -162,20 +173,25 @@ export default function ChargingPlan({ area, controls }: FormProps) {
                     {forecastAdviceError && <p>{t(texts.error)}</p>}
                 </>
             )}
-            <Button
-                variant="secondary"
-                value="Legg til bil"
-                icon="/icons/menu.svg"
-                // onClick={() => setMenuVisible(true)}
-                // ref={openRef}
-                onClick={() => router.push('/ev')}
-            />
+            {!ev && (
+                <Button
+                    variant="secondary"
+                    value="Legg til bil"
+                    icon="/icons/menu.svg"
+                    // onClick={() => setMenuVisible(true)}
+                    // ref={openRef}
+                    onClick={() => router.push('/ev')}
+                />
+            )}
             {ev && evCapacity && chargerCapacity && (
-                <div>
-                    <p>{ev}</p>
-                    <p>Bil: {evCapacity} kW</p>
-                    <p>Lader: {chargerCapacity} kW</p>
-                </div>
+                <EVCard
+                    name={ev}
+                    img={evImage}
+                    percentageStart={parseInt(chargingPercentageStart)}
+                    percentageStop={parseInt(chargingPercentageStop)}
+                    charger={parseInt(chargerCapacity)}
+                    onClick={() => router.push('/ev')}
+                />
             )}
             <Modal modalRef={modalRef} isVisible={isMenuVisible}>
                 <div>Test</div>

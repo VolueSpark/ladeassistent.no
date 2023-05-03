@@ -11,7 +11,7 @@ type ModelProps = {
     evs: VehicleRecord
     nestedMenuDepth: number
     setNestedMenuDepth: (depth: number) => void
-    cbFn?: () => void
+    cbFn: () => void
 }
 
 export default function Model({
@@ -22,7 +22,7 @@ export default function Model({
 }: ModelProps) {
     const { t } = useTranslation()
     const [activeMake, setActiveMake] = useState<string>('')
-    const [activeVehicle, setActiveVehicle] = useState<VehicleDTO | null>(null)
+    const [updated, setUpdated] = useState(false)
 
     const [_vehicle, setVehicle] = useLocalStorage<string>('ev', '')
     const [_vehicleImg, setVehicleImg] = useLocalStorage<string>('ev_image', '')
@@ -31,25 +31,25 @@ export default function Model({
         ''
     )
 
-    useEffect(() => {
-        setVehicle(
-            `${activeVehicle?.naming.make ?? ''} ${
-                activeVehicle?.naming.model ?? ''
-            }`
-        )
-        setVehicleImg(activeVehicle?.media.image.thumbnail_url ?? '')
-        setVehicleCapacity(activeVehicle?.battery.full_kwh?.toString() ?? '')
-    }, [activeVehicle])
-
     const onMakeClick = (make: string) => {
         setActiveMake(make)
         setNestedMenuDepth(2)
     }
 
     const onModelClick = (vehicle: VehicleDTO) => {
-        setActiveVehicle(vehicle)
-        if (typeof cbFn === 'function') cbFn()
+        setVehicle(`${vehicle.naming.make ?? ''} ${vehicle.naming.model ?? ''}`)
+        setVehicleImg(vehicle.media.image.thumbnail_url ?? '')
+        setVehicleCapacity(vehicle.battery.full_kwh?.toString() ?? '')
+        setUpdated(true)
     }
+
+    // This is needed to ensure that nothing is cleaned up before the localstorage is updated
+    useEffect(() => {
+        if (updated) {
+            setUpdated(false)
+            cbFn()
+        }
+    }, [updated])
 
     return (
         <>
@@ -68,19 +68,15 @@ export default function Model({
             )}
             {nestedMenuDepth === 2 && (
                 <div>
-                    {!activeVehicle && (
-                        <div>
-                            <h3>{activeMake}</h3>
-                            {evs[activeMake].map((ev) => (
-                                <div key={ev.id} className={style.item}>
-                                    <p onClick={() => onModelClick(ev)}>
-                                        {ev.naming.make} {ev.naming.model}{' '}
-                                        {ev.naming.edition} {ev.naming.version}
-                                    </p>
-                                </div>
-                            ))}
+                    <h3>{activeMake}</h3>
+                    {evs[activeMake].map((ev) => (
+                        <div key={ev.id} className={style.item}>
+                            <p onClick={() => onModelClick(ev)}>
+                                {ev.naming.make} {ev.naming.model}{' '}
+                                {ev.naming.edition} {ev.naming.version}
+                            </p>
                         </div>
-                    )}
+                    ))}
                 </div>
             )}
         </>

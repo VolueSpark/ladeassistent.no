@@ -37,8 +37,6 @@ export default async function handler(
         }
     )
 
-    console.log(response)
-
     if (!(response.status === 200)) {
         res.status(response.status).json({
             message:
