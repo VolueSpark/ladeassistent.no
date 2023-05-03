@@ -46,7 +46,7 @@ const texts = {
     },
 }
 
-const MOBILE_BEAKPOINT = 584
+export const MOBILE_BEAKPOINT = 584
 
 export default function Navbar() {
     const { t, language } = useTranslation()

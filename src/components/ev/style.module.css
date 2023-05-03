@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem auto;
+    max-width: 342px;
+}
+
+.item {
+    padding-left: 1rem;
+    border-bottom: 1px solid #C3C3C3;
+}
+
+.onboarding__subpage__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.radio__container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.onboarding__controls {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.onboarding__controls__back {
+    display: flex;
+    flex-direction: row;
+}

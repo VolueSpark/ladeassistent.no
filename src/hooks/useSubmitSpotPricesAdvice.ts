@@ -10,7 +10,11 @@ export default function useSubmitSpotPricesAdvice() {
         useState(false)
 
     const submitSpotPricesAdvice = useCallback(
-        async function useSubmitSpotPricesAdvice(area: string): Promise<void> {
+        async function useSubmitSpotPricesAdvice(
+            area: string,
+            powerInKiloWatts: number,
+            hours: number
+        ): Promise<void> {
             setIsLoadingSpotPricesAdvice(true)
             setSpotPricesAdviceError('')
             const response = await fetch(`/api/spot-prices/${area}/advice`, {
@@ -25,8 +29,8 @@ export default function useSubmitSpotPricesAdvice() {
                         vatRate: 1.25,
                     },
                     chargingSessionParameters: {
-                        powerInKiloWatts: 3.6,
-                        duration: '04:00:00',
+                        powerInKiloWatts: powerInKiloWatts,
+                        duration: `${hours.toString().padStart(2, '0')}:00:00`,
                     },
                     startFrom: new Date().toISOString(),
                 }),
