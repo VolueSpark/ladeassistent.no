@@ -33,9 +33,9 @@ export default function Interval({
     return (
         <div className={style.container}>
             <div>
-                <h3>
+                <p className={style.header}>
                     {t(texts.first)} <b>{t(texts.second)}</b>
-                </h3>
+                </p>
                 <p>{t(texts.info)}</p>
             </div>
             <div>

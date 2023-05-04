@@ -8,6 +8,7 @@ import { texts } from './texts'
 import Charger from './charger'
 import Interval from './interval'
 import Model from './model'
+import { Icon } from '../UI'
 
 export type VehicleRecord = Record<string, Array<VehicleDTO>>
 
@@ -63,15 +64,14 @@ export default function AddVehicle() {
                         className={style.onboarding__controls__back}
                         onClick={onBackClick}
                     >
-                        <p>
-                            <b>{t(texts.controls.back)}</b>
-                        </p>
+                        <Icon iconName="arrow" width={16} height={16} />
+                        <p>{t(texts.controls.back)}</p>
                     </div>
                 ) : (
                     <div></div>
                 )}
                 <p className={style.menu__depth}>
-                    {menuDepth} / {3}
+                    <b>{menuDepth}</b> / {3}
                 </p>
                 <p onClick={() => router.push('/')}>
                     {t(texts.controls.close)}

@@ -3,3 +3,7 @@
     border-bottom: 1px solid #C3C3C3;
     cursor: pointer;
 }
+
+.header {
+    font-size: 1.25rem;
+}

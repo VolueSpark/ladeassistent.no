@@ -55,10 +55,10 @@ export default function Model({
         <>
             {nestedMenuDepth === 1 && (
                 <div>
-                    <h3>
+                    <p className={style.header}>
                         {t(texts.first)} <b>{t(texts.second)}</b>{' '}
                         {t(texts.third)}
-                    </h3>
+                    </p>
                     {Object.keys(evs).map((make) => (
                         <div key={make} className={style.item}>
                             <p onClick={() => onMakeClick(make)}>{make}</p>

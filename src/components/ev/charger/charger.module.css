@@ -9,3 +9,7 @@
     flex-direction: column;
     gap: 0.5rem;
 }
+
+.header {
+    font-size: 1.25rem;
+}

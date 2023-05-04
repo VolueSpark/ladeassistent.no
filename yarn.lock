@@ -1087,10 +1087,10 @@
     "@visx/event" "2.17.0"
     prop-types "^15.6.2"
 
-"@voluespark/spark.elements@0.0.26":
-  version "0.0.26"
-  resolved "https://npm.pkg.github.com/download/@voluespark/spark.elements/0.0.26/26310b2215651e531394e190e03a735f5e6b082c#26310b2215651e531394e190e03a735f5e6b082c"
-  integrity sha512-o/fCOEx1x7Szjp+BOoHYtKIv7p5zqnl8egVDGjpYGn6wAiY9SpzOCdcfxA7w22nEsj02MPdp8jmmXhiSxXQWRg==
+"@voluespark/spark.elements@0.0.27":
+  version "0.0.27"
+  resolved "https://npm.pkg.github.com/download/@voluespark/spark.elements/0.0.27/c0d3daa681cad83e6f970bb6191c4089ab35689d#c0d3daa681cad83e6f970bb6191c4089ab35689d"
+  integrity sha512-vP0MAuOrxQYSovtsXcyRRaGPvWO9I+iCoeyfpthC8ZmuLLVYcHFFV8j15GuSPukPVNyvQjNwi5CYOKD2POe9cg==
   dependencies:
     "@react-hook/size" "^2.1.2"
     "@types/node" "18.11.18"
