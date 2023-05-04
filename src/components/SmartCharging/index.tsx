@@ -11,6 +11,7 @@ import AdviceGraphWrapper from '../AdviceGraphWrapper'
 
 import style from './SmartCharging.module.css'
 import ActiveComponentSelector from './ActiveComponentSelector'
+import Modal from '../UI/modal'
 
 const texts = {
     error: {
