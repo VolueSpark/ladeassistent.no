@@ -30,3 +30,7 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to reach the local dev server.
+
+## Disclaimer
+
+There are three `internal` folders: `pages/api/internal`, `pages/internal` and `src/components/Internal`. These should be deleted as they rely on internal API keys used for testing new features. They won't stop the project from running, but any interaction with these routes will likely result in error messages. This is a temporary solution.
