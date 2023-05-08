@@ -190,7 +190,7 @@ export default function ChargingPlan({ area, controls }: FormProps) {
                     percentageStart={parseInt(chargingPercentageStart)}
                     percentageStop={parseInt(chargingPercentageStop)}
                     charger={parseInt(chargerCapacity)}
-                    onClick={() => router.push('/ev')}
+                    onClick={() => router.push('/ev/edit')}
                 />
             )}
             <Modal modalRef={modalRef} isVisible={isMenuVisible}>
