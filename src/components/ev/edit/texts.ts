@@ -15,6 +15,10 @@ export const texts = {
         nb: 'Avbryt',
         en: 'Cancel',
     },
+    button_save: {
+        nb: 'Lagre',
+        en: 'Save',
+    },
     modal: {
         header: {
             nb: 'Du er i ferd med å slette bilen',

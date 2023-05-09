@@ -9,11 +9,13 @@ import { useEffect, useState } from 'react'
 type IntervalProps = {
     controlsValue: string
     controlsOnClick: () => void
+    range?: Array<number>
 }
 
 export default function Interval({
     controlsValue,
     controlsOnClick,
+    range,
 }: IntervalProps) {
     const [_chargingPercentageStart, setChargingPercentageStart] =
         useLocalStorage<string>('charging_percentage_start', '')
@@ -21,7 +23,9 @@ export default function Interval({
         useLocalStorage<string>('charging_percentage_stop', '')
 
     // TODO: use values from local storage
-    const [chargingRange, setchargingRange] = useState<Array<number>>([10, 80])
+    const [chargingRange, setchargingRange] = useState<Array<number>>(
+        range?.length ? range : [10, 80]
+    )
 
     useEffect(() => {
         setChargingPercentageStart(chargingRange[0].toString())

@@ -6,12 +6,17 @@ import style from './style.module.css'
 import { texts } from './texts'
 import Modal from '@/components/UI/modal'
 import { useRouter } from 'next/router'
+import Model from '../model'
+import Interval from '../interval'
+import Charger from '../charger'
+import ModelList from './ModelList'
 
 export default function Edit() {
     const { t } = useTranslation()
     const router = useRouter()
 
     const [isModalVisible, setModalVisible] = useState(false)
+    const [editingMode, setEditingMode] = useState('')
 
     const [ev, setEv] = useState<string>('')
     const [evCapacity, setEvCapacity] = useState<string>('')
@@ -41,7 +46,7 @@ export default function Edit() {
                 ?.replaceAll('"', '') ?? ''
         )
         setEvImage(localStorage.getItem('ev_image')?.replaceAll('"', '') ?? '')
-    }, [])
+    }, [editingMode])
 
     const deleteCar = () => {
         localStorage.setItem('ev', '')
@@ -51,6 +56,10 @@ export default function Edit() {
         localStorage.setItem('charging_percentage_stop', '')
         localStorage.setItem('ev_image', '')
         router.push('/')
+    }
+
+    const handleItemClick = (value: Array<string>) => {
+        setEditingMode(value[0])
     }
 
     return (
@@ -77,7 +86,7 @@ export default function Edit() {
                     ],
                 }}
                 info={t(texts.info)}
-                onItemClick={(value) => console.log('clicked', value)}
+                onItemClick={handleItemClick}
                 buttonValue={t(texts.button_delete)}
                 onButtonClick={() => setModalVisible(true)}
             />
@@ -103,6 +112,35 @@ export default function Edit() {
                                 {t(texts.button_cancel)}
                             </Button>
                         </div>
+                    </div>
+                </Modal>
+            )}
+            {editingMode && (
+                <Modal onOutsideClick={() => setEditingMode('')}>
+                    <div
+                        className={`${style.modal__container} ${style.modal__container__large}`}
+                    >
+                        {editingMode === 'brand' && (
+                            <ModelList
+                                onModelSelect={() => setEditingMode('')}
+                            />
+                        )}
+                        {editingMode === 'chargingInterval' && (
+                            <Interval
+                                controlsValue={t(texts.button_save)}
+                                controlsOnClick={() => setEditingMode('')}
+                                range={[
+                                    parseInt(chargingPercentageStart),
+                                    parseInt(chargingPercentageStop),
+                                ]}
+                            />
+                        )}
+                        {editingMode === 'chargerCapacity' && (
+                            <Charger
+                                controlsValue={t(texts.button_save)}
+                                controlsOnClick={() => setEditingMode('')}
+                            />
+                        )}
                     </div>
                 </Modal>
             )}

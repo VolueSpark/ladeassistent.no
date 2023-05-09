@@ -12,7 +12,7 @@ import { Icon } from '../UI'
 
 export type VehicleRecord = Record<string, Array<VehicleDTO>>
 
-const vehicleListDTOMapper = (
+export const vehicleListDTOMapper = (
     vehicleListDTO: VehicleListDTO
 ): VehicleRecord => {
     const record: VehicleRecord = {}
