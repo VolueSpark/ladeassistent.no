@@ -11,9 +11,6 @@ import AdviceGraphWrapper from '../AdviceGraphWrapper'
 
 import style from './SmartCharging.module.css'
 import ActiveComponentSelector from './ActiveComponentSelector'
-import Modal, { useModal } from '@/src/layout/modal'
-import useResize from '@/src/hooks/useResize'
-import { MOBILE_BEAKPOINT } from '@/src/layout/navbar'
 import { useRouter } from 'next/router'
 import EVCard from './EVCard'
 
@@ -58,17 +55,6 @@ export default function ChargingPlan({ area, controls }: FormProps) {
         useState<string>('')
     const [evImage, setEvImage] = useState('')
 
-    const { width } = useResize()
-    const isMobile = width <= MOBILE_BEAKPOINT
-    const modalRef = React.createRef<HTMLDivElement>()
-    const navRef = React.createRef<HTMLUListElement>()
-    const openRef = React.createRef<HTMLButtonElement>()
-    const {
-        isMenuVisible,
-        setMenuVisible,
-        isNestedMenuVisible,
-        setNestedMenuVisible,
-    } = useModal(modalRef, navRef, openRef, isMobile)
     const router = useRouter()
 
     const { getGeolocation, locationError } = usePriceArea(setRegion)
@@ -193,9 +179,6 @@ export default function ChargingPlan({ area, controls }: FormProps) {
                     onClick={() => router.push('/ev/edit')}
                 />
             )}
-            <Modal modalRef={modalRef} isVisible={isMenuVisible}>
-                <div>Test</div>
-            </Modal>
         </div>
     )
 }
