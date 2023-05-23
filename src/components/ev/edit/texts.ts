@@ -25,7 +25,7 @@ export const texts = {
             en: "You're about to delete the car",
         },
         content: {
-            nb: 'Ladeplaner vil fra nå av bli utregnet baser på generisk bildata.',
+            nb: 'Ladeplaner vil fra nå av bli utregnet basert på generisk bildata.',
             en: 'Charging plans will from now on be calculated based on generic car data.',
         },
     },

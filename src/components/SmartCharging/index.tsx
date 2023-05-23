@@ -80,14 +80,14 @@ export default function ChargingPlan({ area, controls }: FormProps) {
             chargingPercentageStop
         ) {
             const kWToCharge =
-                parseInt(evCapacity.replaceAll('"', '')) *
+                parseFloat(evCapacity.replaceAll('"', '')) *
                 ((parseInt(chargingPercentageStop.replaceAll('"', '')) -
                     parseInt(chargingPercentageStart.replaceAll('"', ''))) /
                     100)
 
-            powerInKiloWatts = parseInt(chargerCapacity.replaceAll('"', ''))
+            powerInKiloWatts = parseFloat(chargerCapacity.replaceAll('"', ''))
             hours = Math.ceil(
-                kWToCharge / parseInt(chargerCapacity.replaceAll('"', ''))
+                kWToCharge / parseFloat(chargerCapacity.replaceAll('"', ''))
             )
         }
 
@@ -175,7 +175,7 @@ export default function ChargingPlan({ area, controls }: FormProps) {
                     img={evImage}
                     percentageStart={parseInt(chargingPercentageStart)}
                     percentageStop={parseInt(chargingPercentageStop)}
-                    charger={parseInt(chargerCapacity)}
+                    charger={parseFloat(chargerCapacity)}
                     onClick={() => router.push('/ev/edit')}
                 />
             )}

@@ -25,6 +25,17 @@
     max-width: 390px;
 }
 
+.modal__header {
+    position: relative;
+}
+
+.modal__close_button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
 .modal__text {
     margin: 0;
 }

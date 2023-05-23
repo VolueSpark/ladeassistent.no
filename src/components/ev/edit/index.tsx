@@ -6,10 +6,10 @@ import style from './style.module.css'
 import { texts } from './texts'
 import Modal from '@/components/UI/modal'
 import { useRouter } from 'next/router'
-import Model from '../model'
 import Interval from '../interval'
 import Charger from '../charger'
 import ModelList from './ModelList'
+import { Icon } from '@/components/UI'
 
 export default function Edit() {
     const { t } = useTranslation()
@@ -69,7 +69,7 @@ export default function Edit() {
                 car={{
                     brand: ev,
                     model: ev,
-                    batteryCapacity: parseInt(evCapacity),
+                    batteryCapacity: parseFloat(evCapacity),
                     img: (
                         <img
                             className={style.image}
@@ -79,7 +79,7 @@ export default function Edit() {
                     ),
                 }}
                 parameters={{
-                    chargerCapacity: parseInt(chargerCapacity),
+                    chargerCapacity: parseFloat(chargerCapacity),
                     chargingInterval: [
                         parseInt(chargingPercentageStart),
                         parseInt(chargingPercentageStop),
@@ -120,6 +120,14 @@ export default function Edit() {
                     <div
                         className={`${style.modal__container} ${style.modal__container__large}`}
                     >
+                        <div className={style.modal__header}>
+                            <div
+                                className={style.modal__close_button}
+                                onClick={() => setEditingMode('')}
+                            >
+                                <Icon iconName="close" />
+                            </div>
+                        </div>
                         {editingMode === 'brand' && (
                             <ModelList
                                 onModelSelect={() => setEditingMode('')}

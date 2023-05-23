@@ -7,3 +7,9 @@
 .header {
     font-size: 1.25rem;
 }
+
+.list {
+    max-height: 80vh;
+    overflow: auto;
+    width: 100%;
+}
