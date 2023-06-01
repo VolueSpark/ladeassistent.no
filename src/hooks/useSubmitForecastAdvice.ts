@@ -9,7 +9,10 @@ export default function useSubmitForecastAdvice() {
         useState(false)
 
     const submitForecastAdvice = useCallback(
-        async function useSubmitForecastAdvice(area: string): Promise<void> {
+        async function useSubmitForecastAdvice(
+            area: string,
+            segmentSize: number
+        ): Promise<void> {
             setIsLoadingForecastAdvice(true)
             setForecastAdviceError('')
             const response = await fetch(`/api/forecast/${area}/advice`, {
@@ -24,7 +27,7 @@ export default function useSubmitForecastAdvice() {
                         vatRate: 1.25,
                     },
                     segmentOptionsParameters: {
-                        segmentSize: 6,
+                        segmentSize: segmentSize,
                     },
                 }),
             })

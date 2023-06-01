@@ -30,6 +30,7 @@ export default function Layout({ children, title, description }: LayoutProps) {
             <main className={style.container}>
                 <Navbar />
                 <div className={style.bodyContainer}>{children}</div>
+                <div id="modal"></div>
             </main>
             <Footer />
         </div>
