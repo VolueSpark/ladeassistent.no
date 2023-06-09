@@ -13,7 +13,7 @@
         "@leile/lobo-t": "^1.0.5",
         "@next/font": "^13.0.5",
         "@turf/boolean-point-in-polygon": "^6.5.0",
-        "@voluespark/spark.elements": "0.0.24",
+        "@voluespark/spark.elements": "0.0.28",
         "date-fns": "^2.29.3",
         "framer-motion": "^7.6.19",
         "next": "13.0.0",

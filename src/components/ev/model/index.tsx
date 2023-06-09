@@ -5,33 +5,8 @@ import { texts } from './texts'
 import style from './model.module.css'
 import { useTranslation } from '@/i18n'
 import Input from '@/components/UI/input'
-
-export type VehicleRecord = Record<string, Array<VehicleDTO>>
-
-export type Naming = {
-    make: string | null
-    model: string | null
-    version: string | null
-    edition: string | null
-}
-
-export type Battery = {
-    full_kwh: number | null
-    usable_kwh: number | null
-}
-
-export type Media = {
-    image: {
-        thumbnail_url: string | null
-    }
-}
-
-export type VehicleDTO = {
-    id: string
-    naming: Naming
-    battery: Battery
-    media: Media
-}
+import { VehicleRecord } from '../addVehicle/AddVehicle'
+import { VehicleDTO } from '@/pages/api/vehicle/list'
 
 type ModelProps = {
     evs: VehicleRecord
