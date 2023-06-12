@@ -23,11 +23,8 @@ export default function ForecastTableWrapper({
                     data={data.forecastAdvice.map((f) => ({
                         ...f,
                         averagePrice: f.averagePrice * 100,
+                        type: f.type as any,
                     }))}
-                    legend={{
-                        good: t(texts.legend.good),
-                        avoid: t(texts.legend.avoid),
-                    }}
                 />
             </div>
             <InfoText>{t(texts.infoText)}</InfoText>

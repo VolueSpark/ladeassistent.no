@@ -1,4 +1,4 @@
-import AddVehicle from '@/components/ev/AddVehicle'
+import AddVehicle from '@/components/ev/addVehicle/AddVehicle'
 import Layout from '@/src/layout'
 
 export default function EV() {

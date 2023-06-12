@@ -1,7 +1,7 @@
 export const texts = {
     infoText: {
-        nb: 'Forecast data er basert på analyser. Disse oppdateres hver time. Prisene som vises er et gjennomsnitt i ører/time innenfor de gitte intervallene.',
-        en: 'Forecast data is based on analysis. These update every hour. The prices shown are an average in Norwegian øre/hour within the given intervals.',
+        nb: 'Forecast data er basert på analyser. Disse oppdateres hver time. Prisene som vises er et gjennomsnitt i øre/kWh innenfor de gitte intervallene.',
+        en: 'Forecast data is based on analysis. These update every hour. The prices shown are an average in Norwegian øre/kWh within the given intervals.',
     },
     legend: {
         avoid: {

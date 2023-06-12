@@ -20,7 +20,7 @@ export default function AdviceGraphWrapper({ data }: AdviceGraphWrapperProps) {
                     <AdviceGraph
                         initialHeight={600}
                         data={data.spotPrices}
-                        advice={data.advice}
+                        advice={data.advice as any}
                         priceUnit="øre"
                         energyUnit="kWh"
                         legend={{
@@ -29,7 +29,6 @@ export default function AdviceGraphWrapper({ data }: AdviceGraphWrapperProps) {
                             Worst: t(texts.legend.worst),
                             Avoid: t(texts.legend.avoid),
                             Unknown: '',
-                            Normal: '',
                             Good: '',
                         }}
                         daysLabelText={{

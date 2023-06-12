@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Model from '../model'
-import { VehicleRecord, vehicleListDTOMapper } from '../AddVehicle'
 import { VehicleListDTO } from '@/pages/api/vehicle/list'
+import { VehicleRecord, vehicleListDTOMapper } from '../addVehicle/AddVehicle'
 
 type ModelListProps = {
     onModelSelect: () => void

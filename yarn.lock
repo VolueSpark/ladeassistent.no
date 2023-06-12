@@ -625,6 +625,20 @@
     prop-types "^15.5.10"
     react-use-measure "^2.0.4"
 
+"@visx/axis@2.14.0":
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/@visx/axis/-/axis-2.14.0.tgz#4fe3bf42c20aae599dc94ef5387dfcb1ba3a85ea"
+  integrity sha512-/mJuPiAUN/YdatSlXkkXD/8Pb4gVclbucNZkpUk6JVhnrmow0a1x73QiMXKuH2qDO5GDaqQS0C3Ly9lI3qTQ5Q==
+  dependencies:
+    "@types/react" "*"
+    "@visx/group" "2.10.0"
+    "@visx/point" "2.6.0"
+    "@visx/scale" "2.2.2"
+    "@visx/shape" "2.12.2"
+    "@visx/text" "2.12.2"
+    classnames "^2.3.1"
+    prop-types "^15.6.0"
+
 "@visx/axis@2.18.0":
   version "2.18.0"
   resolved "https://registry.npmjs.org/@visx/axis/-/axis-2.18.0.tgz#9175e9d969df420592082b1ea64c16422377b389"
@@ -668,6 +682,14 @@
   dependencies:
     "@types/react" "*"
     prop-types "^15.5.10"
+
+"@visx/curve@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@visx/curve/-/curve-2.1.0.tgz#f614bfe3db66df7db7382db7a75ced1506b94602"
+  integrity sha512-9b6JOnx91gmOQiSPhUOxdsvcnW88fgqfTPKoVgQxidMsD/I3wksixtwo8TR/vtEz2aHzzsEEhlv1qK7Y3yaSDw==
+  dependencies:
+    "@types/d3-shape" "^1.3.1"
+    d3-shape "^1.0.6"
 
 "@visx/curve@2.17.0":
   version "2.17.0"
@@ -739,6 +761,15 @@
     "@visx/point" "2.17.0"
     "@visx/scale" "2.18.0"
     "@visx/shape" "2.18.0"
+    classnames "^2.3.1"
+    prop-types "^15.6.2"
+
+"@visx/group@2.10.0":
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/@visx/group/-/group-2.10.0.tgz#95839851832545621eb0d091866a61dafe552ae1"
+  integrity sha512-DNJDX71f65Et1+UgQvYlZbE66owYUAfcxTkC96Db6TnxV221VKI3T5l23UWbnMzwFBP9dR3PWUjjqhhF12N5pA==
+  dependencies:
+    "@types/react" "*"
     classnames "^2.3.1"
     prop-types "^15.6.2"
 
@@ -827,6 +858,11 @@
   resolved "https://registry.npmjs.org/@visx/point/-/point-2.17.0.tgz#c11f1efee5241bcd612a29f3b3099cb435c9604e"
   integrity sha512-fUdGQBLGaSVbFTbQ6k+1nPisbqYjTjAdo9FhlwLd3W3uyXN/39Sx2z3N2579sVNBDzmCKdYNQIU0HC+/3Vqo6w==
 
+"@visx/point@2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@visx/point/-/point-2.6.0.tgz#c4316ca409b5b829c5455f07118d8c14a92cc633"
+  integrity sha512-amBi7yMz4S2VSchlPdliznN41TuES64506ySI22DeKQ+mc1s1+BudlpnY90sM1EIw4xnqbKmrghTTGfy6SVqvQ==
+
 "@visx/react-spring@2.18.0":
   version "2.18.0"
   resolved "https://registry.npmjs.org/@visx/react-spring/-/react-spring-2.18.0.tgz#c19c8f64213dae9d62147ae1f99321f6c63c1c91"
@@ -862,6 +898,36 @@
     d3-interpolate "^1.4.0"
     d3-scale "^3.3.0"
     d3-time "^2.1.1"
+
+"@visx/scale@2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@visx/scale/-/scale-2.2.2.tgz#b8eafabdcf92bb45ab196058fe184772ad80fd25"
+  integrity sha512-3aDySGUTpe6VykDQmF+g2nz5paFu9iSPTcCOEgkcru0/v5tmGzUdvivy8CkYbr87HN73V/Jc53lGm+kJUQcLBw==
+  dependencies:
+    "@types/d3-interpolate" "^1.3.1"
+    "@types/d3-scale" "^3.3.0"
+    "@types/d3-time" "^2.0.0"
+    d3-interpolate "^1.4.0"
+    d3-scale "^3.3.0"
+    d3-time "^2.1.1"
+
+"@visx/shape@2.12.2":
+  version "2.12.2"
+  resolved "https://registry.yarnpkg.com/@visx/shape/-/shape-2.12.2.tgz#81ed88bf823aa84a4f5f32a9c9daf8371a606897"
+  integrity sha512-4gN0fyHWYXiJ+Ck8VAazXX0i8TOnLJvOc5jZBnaJDVxgnSIfCjJn0+Nsy96l9Dy/bCMTh4DBYUBv9k+YICBUOA==
+  dependencies:
+    "@types/d3-path" "^1.0.8"
+    "@types/d3-shape" "^1.3.1"
+    "@types/lodash" "^4.14.172"
+    "@types/react" "*"
+    "@visx/curve" "2.1.0"
+    "@visx/group" "2.10.0"
+    "@visx/scale" "2.2.2"
+    classnames "^2.3.1"
+    d3-path "^1.0.5"
+    d3-shape "^1.2.0"
+    lodash "^4.17.21"
+    prop-types "^15.5.10"
 
 "@visx/shape@2.18.0":
   version "2.18.0"
@@ -1021,14 +1087,14 @@
     "@visx/event" "2.17.0"
     prop-types "^15.6.2"
 
-"@voluespark/spark.elements@0.0.24":
-  version "0.0.24"
-  resolved "https://npm.pkg.github.com/download/@voluespark/spark.elements/0.0.24/b0ada1994427cbe71d5709fdff310fcd11ce9ad4#b0ada1994427cbe71d5709fdff310fcd11ce9ad4"
-  integrity sha512-eQPeXh4czdQ2QTuRpHOmfusOTKJ71JIbna0HkiL9Bfcv95Y9DTrFDV5tQHHyO43fmyB/flgB6jjCFVpG6u8Rfw==
+"@voluespark/spark.elements@0.0.28":
+  version "0.0.28"
+  resolved "https://npm.pkg.github.com/download/@voluespark/spark.elements/0.0.28/d7fdacf0cdc3cc642fdabb962b0cd2fdc0f3a003#d7fdacf0cdc3cc642fdabb962b0cd2fdc0f3a003"
+  integrity sha512-mPQ6a+80VyAHCUCWv5FbmezMTkCtwUUYcrN6//4fWSRWKo5nHiqr0h3UhJtVmVzA3zTvbfe6/KwcIyu1rUAGrg==
   dependencies:
     "@react-hook/size" "^2.1.2"
     "@types/node" "18.11.18"
-    "@visx/axis" "2.18.0"
+    "@visx/axis" "2.14.0"
     "@visx/text" "2.12.2"
     "@visx/visx" "^2.18.0"
     date-fns "^2.29.3"

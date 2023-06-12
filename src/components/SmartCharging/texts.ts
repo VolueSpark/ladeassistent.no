@@ -61,8 +61,8 @@ export const texts = {
             en: 'Spot prices are fetched from Nord Pool. They are based on an average of the spot prices for the last 24/48 hours. Spot prices update every 15 minutes.',
         },
         forecast: {
-            nb: 'Forecast data er basert på analyser. Disse oppdateres hver andre time. Prisene som vises er et gjennomsnitt i ører/time innenfor de gitte intervallene.',
-            en: 'Forecast data is based on analysis. These update every other hour. The prices shown are an average in Norwegian øre/hour within the given intervals.',
+            nb: 'Forecast data er basert på analyser. Disse oppdateres hver andre time. Prisene som vises er et gjennomsnitt i øre/kWh innenfor de gitte intervallene.',
+            en: 'Forecast data is based on analysis. These update every other hour. The prices shown are an average in Norwegian øre/kWh within the given intervals.',
         },
     },
 }
