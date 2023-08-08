@@ -1,12 +1,12 @@
 # Description
 
-Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
+<!-- Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change. -->
 
 Fixes # (issue)
 
 ## Type of change
 
-Please delete options that are not relevant.
+<!-- Please delete options that are not relevant. -->
 
 - [ ] UI- or UX-change
 - [ ] Bug fix (non-breaking change which fixes an issue)
@@ -16,11 +16,11 @@ Please delete options that are not relevant.
 
 # How Has This Been Tested?
 
-Please describe the tests that you ran to verify your changes.
+<!-- Please describe the tests that you ran to verify your changes. -->
 
 - [ ] Manual testing
 - [ ] Written unit test or E2E test
 
-# Before merge
+# Before merging
 
 - [ ] Visual change tested and approved by Mari Lise
