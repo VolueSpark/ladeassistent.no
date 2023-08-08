@@ -23,4 +23,4 @@ Please describe the tests that you ran to verify your changes.
 
 # Before merge
 
-- [ ] Visual change tested and approved by @marikvistad  
+- [ ] Visual change tested and approved by Mari Lise
