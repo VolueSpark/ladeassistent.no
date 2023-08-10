@@ -3,7 +3,7 @@ import { PriceArea } from '@/utils/priceArea.helper'
 import useLocalStorage from 'use-local-storage'
 import { useTranslation } from '@/i18n'
 import usePriceArea from '@/src/hooks/usePriceArea'
-import { AreaSelector, Button } from '../UI'
+import { AreaSelector } from '../UI'
 import useSubmitForecastAdvice from '@/hooks/useSubmitForecastAdvice'
 import useSubmitSpotPricesAdvice from '@/hooks/useSubmitSpotPricesAdvice'
 import ForecastTableWrapper from '../ForecastTableWrapper'
@@ -11,8 +11,8 @@ import AdviceGraphWrapper from '../AdviceGraphWrapper'
 
 import style from './SmartCharging.module.css'
 import ActiveComponentSelector from './ActiveComponentSelector'
-import { useRouter } from 'next/router'
-import EVCard from './EVCard'
+// import { useRouter } from 'next/router'
+// import EVCard from './EVCard'
 
 const texts = {
     error: {
@@ -46,16 +46,16 @@ export default function ChargingPlan({ area, controls }: FormProps) {
     } = useSubmitSpotPricesAdvice()
 
     const [region, setRegion] = useLocalStorage<string>('region', '')
-    const [ev, setEv] = useState<string>('')
+    const [_ev, setEv] = useState<string>('')
     const [evCapacity, setEvCapacity] = useState<string>('')
     const [chargerCapacity, setChargerCapacity] = useState<string>('')
     const [chargingPercentageStart, setChargingPercentageStart] =
         useState<string>('')
     const [chargingPercentageStop, setChargingPercentageStop] =
         useState<string>('')
-    const [evImage, setEvImage] = useState('')
+    const [_evImage, setEvImage] = useState('')
 
-    const router = useRouter()
+    // const router = useRouter()
 
     const { getGeolocation, locationError } = usePriceArea(setRegion)
     useEffect(() => {
@@ -159,7 +159,7 @@ export default function ChargingPlan({ area, controls }: FormProps) {
                     {forecastAdviceError && <p>{t(texts.error)}</p>}
                 </>
             )}
-            {!ev && (
+            {/* {!ev && (
                 <Button
                     variant="secondary"
                     value="Legg til bil"
@@ -178,7 +178,7 @@ export default function ChargingPlan({ area, controls }: FormProps) {
                     charger={parseFloat(chargerCapacity)}
                     onClick={() => router.push('/ev/edit')}
                 />
-            )}
+            )} */}
         </div>
     )
 }
