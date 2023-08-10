@@ -68,7 +68,7 @@ async function queryVehicleList(): Promise<VehicleListDTO | null> {
         },
         body: JSON.stringify({
             query: `{
-                vehicleList(page: 0, size: 1000, search: "") {
+                vehicleList(page: 0, size: 100, search: "") {
                     id
                     naming {
                         make
