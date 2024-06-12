@@ -7,10 +7,12 @@ const VOLUE_IDENTITY_BASE_URL = process.env.VOLUE_IDENTITY_BASE_URL as string
 const VOLUE_IDENTITY_TOKEN_PATH = process.env
     .VOLUE_IDENTITY_TOKEN_PATH as string
 const PLATFORM_SCOPES = process.env.PLATFORM_SCOPES as string
-const EXPIRATION_WINDOW_IN_SECONDS = 300
+const EXPIRATION_WINDOW_IN_SECONDS = parseInt(
+    process.env.PLATFORM_EXPIRATION_WINDOW_IN_SECONDS ?? '300'
+)
 
 // "Cached" access_token
-let access_token: AccessToken | undefined = undefined
+let access_token: AccessToken | null = null
 
 export async function getOrRefreshAccessToken() {
     const client = new ClientCredentials({
@@ -31,11 +33,12 @@ export async function getOrRefreshAccessToken() {
         scope: PLATFORM_SCOPES,
     }
 
-    if (!access_token) {
+    if (access_token === null) {
         try {
             access_token = await client.getToken(tokenParams)
         } catch (error: any) {
             console.log('Access Token error', JSON.stringify(error.message))
+            access_token = null
             throw error
         }
     }
@@ -45,6 +48,7 @@ export async function getOrRefreshAccessToken() {
             access_token = await access_token.refresh()
         } catch (error: any) {
             console.log('Error refreshing access token: ', error.message)
+            access_token = null
         }
     }
 
