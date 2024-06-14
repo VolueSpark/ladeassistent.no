@@ -20,6 +20,14 @@ export default async function handler(
     const { area, currency, energyUnit, vatRate } = req.query
 
     const token = await getOrRefreshAccessToken()
+    if (token === null) {
+        res.status(500).json({
+            message:
+                'There was an error with the response from the external API.',
+        })
+        return
+    }
+
     const response = await fetch(
         `${PLATFORM_API_URL}/smart/v1/prices/actual/${area}?Currency=${currency}&EnergyUnit=${energyUnit}&VATRate=${vatRate}`,
         {
